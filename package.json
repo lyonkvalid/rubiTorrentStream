@@ -199,7 +199,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "clear && node index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
