@@ -2,7 +2,7 @@
   "name": "rubi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/app.js",
   "dependencies": {
     "accepts": "^1.3.7",
     "addr-to-ip-port": "^1.5.4",
@@ -195,11 +195,13 @@
     "videostream": "^3.2.2",
     "webtorrent": "^1.5.8",
     "wrappy": "^1.0.2",
-    "ws": "^7.5.6"
+    "ws": "^7.5.6",
+    "axios": "^0.26.1",
+    "graphql": "^16.3.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "",

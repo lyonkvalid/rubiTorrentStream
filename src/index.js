@@ -3,9 +3,13 @@ import express from "express";
 import WebTorrent from "webtorrent";
 import portFinder from "portfinder";
 import TCPPortUsed from "tcp-port-used";
+import StreamBodyParser from "stream-body-parser";
+import Transcoder from "stream-transcoder";
 
 const app = express();
-let client = new WebTorrent();
+// const bodyParser = new StreamBodyParser(app);
+
+// let client = new WebTorrent();
 
 const parseInfoHash = magnet => magnet.split("/").slice(-1)[0].toLowerCase();
 
@@ -46,7 +50,18 @@ app.get("/stream", async (req, res) => {
 });
 
 app.get("/video.mp4", (req, res) => {
-  fs.createReadStream("video.mp4").pipe(res);
+new Transcoder(fs.createReadStream("video.mp4"))
+    	   
+    	    .videoCodec('h264')
+
+    	   // .audioCodec('aac')
+
+    	    .format('mp4')
+    	    .on('finish', function() {
+    	    	next();
+    	    })
+    	    .stream().pipe(res);
+  // .pipe(res);
 });
 
 app.listen(process.env.PORT || 3000, () => {
