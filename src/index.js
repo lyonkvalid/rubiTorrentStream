@@ -1,15 +1,11 @@
 import fs from "fs";
 import express from "express";
 import WebTorrent from "webtorrent";
-import portFinder from "portfinder";
-import TCPPortUsed from "tcp-port-used";
-import StreamBodyParser from "stream-body-parser";
-import Transcoder from "stream-transcoder";
+import schema from "./schemas/serial.js";
+import { graphqlHTTP } from "express-graphql";
 
 const app = express();
-// const bodyParser = new StreamBodyParser(app);
-
-// let client = new WebTorrent();
+const client = new WebTorrent();
 
 const parseInfoHash = magnet => magnet.split("/").slice(-1)[0].toLowerCase();
 
@@ -49,20 +45,10 @@ app.get("/stream", async (req, res) => {
   })();
 });
 
-app.get("/video.mp4", (req, res) => {
-new Transcoder(fs.createReadStream("video.mp4"))
-    	   
-    	    .videoCodec('h264')
-
-    	   // .audioCodec('aac')
-
-    	    .format('mp4')
-    	    .on('finish', function() {
-    	    	next();
-    	    })
-    	    .stream().pipe(res);
-  // .pipe(res);
-});
+app.use("/graphql", graphqlHTTP({
+  schema,
+  graphiql: true
+}));
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Files serving @ port 3000");

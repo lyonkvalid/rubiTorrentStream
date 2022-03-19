@@ -1,7 +1,7 @@
 import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLString } from "graphql";
 
 import { fetchEpisodes, fetchSerial, dataLoader } from "../http/oneom.js"
-import { serialType, episodeType } from "../types/type.js";
+import { serialType, episodeType } from "../types/oneom/type.js";
 
 const queryType = new GraphQLObjectType({
   name: "Query",
