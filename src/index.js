@@ -1,6 +1,7 @@
 import fs from "fs";
 import express from "express";
 import WebTorrent from "webtorrent";
+import serverless from "serverless-http";
 import schema from "./schemas/serial.js";
 import { graphqlHTTP } from "express-graphql";
 
@@ -50,6 +51,4 @@ app.use("/graphql", graphqlHTTP({
   graphiql: true
 }));
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Files serving @ port 3000");
-});
+export default serverless(app);
