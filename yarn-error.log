@@ -1,0 +1,46 @@
+Arguments: 
+  /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/yarn add graphql express axios fs webtorrent serverless-http express-graphql
+
+PATH: 
+  /data/data/com.termux/files/usr/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.14.2
+
+Platform: 
+  android arm
+
+Trace: 
+  SyntaxError: /data/data/com.termux/files/home/oasis/rubiTorrentStream/package.json: Unexpected token } in JSON at position 179
+      at JSON.parse (<anonymous>)
+      at /data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /data/data/com.termux/files/usr/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "rubi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/indec.js",
+    "dependencies": {
+  
+    },
+    "scripts": {
+      "build": "netlify-lambda build express",
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type":"module"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
